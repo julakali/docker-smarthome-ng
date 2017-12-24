@@ -31,8 +31,9 @@ RUN cd /usr/local && \
     mkdir -p /usr/local/smarthome/var/run/ && \
     cd /usr/local/smarthome/ && pip3 install -r requirements/all.txt
 
+RUN chmod 755 /usr/local/smarthome/bin/smarthome.py
 
-CMD ["/usr/local/smarthome/bin/smarthome.py -d"]
+CMD ["/usr/local/smarthome/bin/smarthome.py", "-d"]
 #CMD ["/usr/local/bin/run.sh"]
 
 ## CLI, Network, Speechparser
