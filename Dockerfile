@@ -25,8 +25,8 @@ RUN apt-get -y install -y build-essential git dialog openntpd python3 python3-de
 
 
 RUN cd /usr/local && \ 
-    git clone git://github.com/smarthomeNG/smarthome.git --branch v1.4.1 && \
-    cd ./smarthome/ && git clone https://github.com/smarthomeNG/plugins.git --branch v1.4.1 && \
+    git clone git://github.com/smarthomeNG/smarthome.git --branch v1.3_Hotfix_2 && \
+    cd ./smarthome/ && git clone https://github.com/smarthomeNG/plugins.git --branch v1.3 && \
     chown -R smarthome:smarthome /usr/local/smarthome && \
     mkdir -p /usr/local/smarthome/var/run/ && \
     cd /usr/local/smarthome/ && pip3 install -r requirements/all.txt
