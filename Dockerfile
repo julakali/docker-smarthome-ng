@@ -55,13 +55,13 @@ RUN adduser smarthome --disabled-password --gecos "First Last,RoomNumber,WorkPho
     usermod -aG www-data  smarthome
 
 RUN cd /usr/local && \ 
-    git clone git://github.com/smarthomeNG/smarthome.git --branch v1.4.1
+    git clone git://github.com/julakali/smarthome.git --branch v1.4.2a-fixpid
     
 RUN cd /usr/local/smarthome/ && \
 #    git clone https://github.com/smarthomeNG/plugins.git --branch v1.4.1 &&
     git clone https://github.com/smarthomeNG/plugins.git && \
     cd plugins && \
-    git checkout d3754bc16bfc461530bc939e505cd3eb654c489b # this commit fixes backend plugin.yaml for 1.4.1
+    git checkout v1.4.2b
         
 RUN chown -R smarthome:smarthome /usr/local/smarthome && \
     mkdir -p /usr/local/smarthome/var/run/ && \
