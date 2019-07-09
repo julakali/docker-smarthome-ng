@@ -55,13 +55,13 @@ RUN adduser smarthome --disabled-password --gecos "First Last,RoomNumber,WorkPho
     usermod -aG www-data  smarthome
 
 RUN cd /usr/local && \
-    git clone git://github.com/smarthomeNG/smarthome.git --branch v1.5.1
+    git clone git://github.com/smarthomeNG/smarthome.git --branch v1.6
 
 RUN cd /usr/local/smarthome/ && \
 #    git clone https://github.com/smarthomeNG/plugins.git --branch v1.4.1 &&
     git clone https://github.com/smarthomeNG/plugins.git && \
     cd plugins && \
-    git checkout v1.5.1
+    git checkout v1.6
 
 RUN chown -R smarthome:smarthome /usr/local/smarthome && \
     mkdir -p /usr/local/smarthome/var/run/ && \
