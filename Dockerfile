@@ -1,7 +1,7 @@
 # smarthome.py  -NG
 #
 #
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Julian Kalinowski
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -33,6 +33,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     python3-psutil \
     libudev-dev \
+    dh-autoreconf \
  && rm -rf /var/lib/apt/lists/*
 
 RUN easy_install3 pip
