@@ -66,6 +66,8 @@ RUN chown -R smarthome:smarthome /usr/local/smarthome && \
     mkdir -p /usr/local/smarthome/var/run/ && \
     cd /usr/local/smarthome/ && pip3 install -r doc/requirements.txt
 
+RUN cd /usr/local/smarthome/ && pip3 install holidays iowait portalocker xmltodict
+
 RUN chmod 755 /usr/local/smarthome/bin/smarthome.py
 
 CMD ["/usr/local/smarthome/bin/smarthome.py", "-d"]
