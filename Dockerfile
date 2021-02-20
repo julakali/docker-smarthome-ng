@@ -1,7 +1,7 @@
 # smarthome.py  -NG
 #
 #
-FROM debian:jessie
+FROM debian:buster
 MAINTAINER Julian Kalinowski
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -33,9 +33,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     python3-psutil \
     libudev-dev \
+    python3-pip \
  && rm -rf /var/lib/apt/lists/*
-
-RUN easy_install3 pip
 
 RUN pip3 install \
     ephem \
@@ -55,17 +54,17 @@ RUN adduser smarthome --disabled-password --gecos "First Last,RoomNumber,WorkPho
     usermod -aG www-data  smarthome
 
 RUN cd /usr/local && \
-    git clone git://github.com/smarthomeNG/smarthome.git --branch v1.6
+    git clone git://github.com/smarthomeNG/smarthome.git --branch v1.8.1
 
 RUN cd /usr/local/smarthome/ && \
 #    git clone https://github.com/smarthomeNG/plugins.git --branch v1.4.1 &&
     git clone https://github.com/smarthomeNG/plugins.git && \
     cd plugins && \
-    git checkout v1.6
+    git checkout v1.8.1
 
 RUN chown -R smarthome:smarthome /usr/local/smarthome && \
     mkdir -p /usr/local/smarthome/var/run/ && \
-    cd /usr/local/smarthome/ && pip3 install -r requirements/all.txt
+    cd /usr/local/smarthome/ && pip3 install -r doc/requirements.txt
 
 RUN chmod 755 /usr/local/smarthome/bin/smarthome.py
 
